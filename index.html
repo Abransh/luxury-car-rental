@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>YasMi Luxury Car Rentals – Mustang Mach-E GT | Milan</title>
+  <meta name="description" content="Luxury electric Mustang Mach-E GT rental in Milan. Secure Stripe payments, delivery available, WhatsApp booking." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="YasMi Luxury Car Rentals – Mustang Mach-E GT" />
+  <meta property="og:description" content="Luxury electric car rental in Milan. Secure booking & payments." />
+  <meta property="og:type" content="website" />
+
+  <!-- Stripe -->
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --text: #0f172a;
+      --muted: #64748b;
+      --bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .lang button {
+      border: 1px solid var(--border);
+      background: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .lang button.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 32px 20px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+    }
+
+    h1 { margin-top: 0; }
+
+    .badges span {
+      display: inline-block;
+      background: #eff6ff;
+      color: #1e3a8a;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .cta a, .cta button {
+      display: inline-block;
+      margin-top: 12px;
+      margin-right: 10px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: white;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .cta .primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    section {
+      margin-top: 56px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      margin-top: 64px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">YasMi Luxury Rentals</div>
+  <div class="lang">
+    <button id="btnEN" class="active">EN</button>
+    <button id="btnIT">IT</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <img src="hero.jpg" alt="Ford Mustang Mach-E GT" />
+    <div>
+      <h1 data-en="Mustang Mach-E GT — Milan"
+          data-it="Mustang Mach-E GT — Milano">
+        Mustang Mach-E GT — Milan
+      </h1>
+
+      <p data-en="Carbonized Grey, full body kit, Bang & Olufsen audio, panoramic roof."
+         data-it="Grigio Carbonized, body kit completo, audio Bang & Olufsen, tetto panoramico.">
+        Carbonized Grey, full body kit, Bang & Olufsen audio, panoramic roof.
+      </p>
+
+      <div class="badges">
+        <span>EV • AWD</span>
+        <span>GT Performance</span>
+        <span>Panoramic Roof</span>
+      </div>
+
+      <div class="cta">
+        <a class="primary" id="waBtn" target="_blank">Book via WhatsApp</a>
+        <a href="#payments">Secure Payment</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h3>What’s included</h3>
+      <ul>
+        <li>100 km/day included</li>
+        <li>Basic insurance</li>
+        <li>Pickup or delivery</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Extras</h3>
+      <ul>
+        <li>Extra km: €0.40/km</li>
+        <li>Delivery Milan: €50</li>
+        <li>Full coverage: €85</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Requirements</h3>
+      <ul>
+        <li>Age 26+</li>
+        <li>Deposit €1200</li>
+        <li>Only renter may drive</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="payments" class="grid">
+    <div class="card">
+      <h3>Deposit (€1200)</h3>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1RzEsNP8wbeYLVaOCm8Y7c4d"
+        publishable-key="pk_test_51RzD5JP8wbeYLVaOuzL9jzHeaN9ayJQdGmPXFGFnMajdBp0MjluX6exQw2vMaIgxAVooCrXRZDjNW8DG4IRoChFY00hNFoOf22">
+      </stripe-buy-button>
+    </div>
+
+    <div class="card">
+      <h3>Pay Now</h3>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1RzEVrP8wbeYLVaOtv8P4hQt"
+        publishable-key="pk_test_51RzD5JP8wbeYLVaOuzL9jzHeaN9ayJQdGmPXFGFnMajdBp0MjluX6exQw2vMaIgxAVooCrXRZDjNW8DG4IRoChFY00hNFoOf22">
+      </stripe-buy-button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 YasMi Luxury Rentals — Milan
+</footer>
+
+<script>
+  const phone = "393282793725";
+
+  function wa(text) {
+    return "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+  }
+
+  document.getElementById("waBtn").href =
+    wa("Hello! I want to rent the Mustang Mach-E GT. Dates: ____");
+
+  const btnEN = document.getElementById("btnEN");
+  const btnIT = document.getElementById("btnIT");
+
+  function setLang(lang) {
+    document.querySelectorAll("[data-en]").forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+    btnEN.classList.toggle("active", lang === "en");
+    btnIT.classList.toggle("active", lang === "it");
+  }
+
+  btnEN.onclick = () => setLang("en");
+  btnIT.onclick = () => setLang("it");
+</script>
+
+</body>
+</html>
