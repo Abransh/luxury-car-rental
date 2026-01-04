@@ -297,4 +297,32 @@ footer {
     .cta-group {
         justify-content: center;
     }
+}/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 6rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
 }
