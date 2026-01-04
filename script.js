@@ -60,3 +60,51 @@ inView(".gallery", ({ target }) => {
         { delay: stagger(0.1), duration: 0.6, easing: "ease-out" }
     );
 });
+
+// Lightbox Logic
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+const galleryImages = document.querySelectorAll('.gallery img');
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = galleryImages[currentIndex].src;
+    lightbox.classList.add('active');
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+}
+
+function nextImage(e) {
+    if (e) e.stopPropagation();
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].src;
+}
+
+function prevImage(e) {
+    if (e) e.stopPropagation();
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].src;
+}
+
+galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+});
+
+lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+lightbox.querySelector('.lightbox-next').addEventListener('click', nextImage);
+lightbox.querySelector('.lightbox-prev').addEventListener('click', prevImage);
+
+// Keyboard Navigation
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+});
